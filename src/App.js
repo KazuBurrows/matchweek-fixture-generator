@@ -10,6 +10,8 @@ import { sponsors } from "./SponsorLogos";
 
 import { readExcelFile } from "./DataGenerator/ExcelReader";
 
+const FILENAME = "Updated Match Scheduler MW08";
+const WEEK_NO = FILENAME.split(" ").at(-1).slice(2);
 
 function App() {
   const [excelData, setExcelData] = useState({});
@@ -23,7 +25,7 @@ function App() {
 
   useEffect(() => {
     // Fetch the Excel file from the public folder (from /assets/example.xlsx)
-    fetch("/Sheets/Updated Match Scheduler MW07.xlsx")
+    fetch(`/Sheets/${FILENAME}.xlsx`)
       .then((response) => response.blob()) // Get the file as a blob
       .then((blob) => {
         // Convert the blob into a file
@@ -110,9 +112,9 @@ function App() {
       />
       <PosterHeader
         competition={data.replace(/\d+/g, "")}
-        week={"week 7 fixtures"}
+        week={`week ${WEEK_NO} fixtures`}
       ></PosterHeader>
-      <div className="pb-[320px]"></div>
+      <div className="pb-[260px]"></div>
 
       {matches.map((match, index) => (
         <li key={index}>

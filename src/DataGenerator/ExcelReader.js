@@ -9,7 +9,8 @@ const matchTemplate = {
 };
 
 const myExlusionFilter = (row) => {
-  const excludedTeams = ["FC Twenty 11", "FC Twenty 11 Reserves"]; // List of teams to exclude
+  // const excludedTeams = ["FC Twenty 11", "FC Twenty 11 Reserves"]; // List of teams to exclude
+  const excludedTeams = ["FC Twenty 11"]; // List of teams to exclude
   return (
     !excludedTeams.includes(row["Home team"]) &&
     !excludedTeams.includes(row["Away team"])
@@ -55,7 +56,7 @@ const groupByCompetition = (rows) => {
         acc.youths.push(match);
       } else if (["12", "11"].some((num) => comp.includes(num))) {
         acc.juniors1.push(match);
-      } else if (["10", "9"].some((num) => comp.includes(num))) {
+      } else if (["10th", "9th"].some((num) => comp.includes(num))) {
         acc.juniors2.push(match);
       } else if (comp.includes("masters")) {
         acc.masters.push(match);
